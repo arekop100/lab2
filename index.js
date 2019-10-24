@@ -34,8 +34,6 @@ min(2, 4, 6)
 max(2, 4, 6)
 
 
-
-
 const user = {
     name: 'Imie',
     "surname": 'Nazwisko',
@@ -58,28 +56,21 @@ const user = {
     ]
 };
 
-function srednia(ob){
-    const imie = ob.name;
-    const nazwisko = ob.surname;
-    const myArray = ob.allGrades
-    let licznik = 0;
-    let mianownik = 0;
-    let tmp = 0;
-    //console.log(obiekt.allGrades[0].grades);
-    for(const el of ob.allGrades){
-        tmp += _.reduce(el.grades,function(sum,n){
-            return sum+n;
-        },0);
-        licznik += (tmp*el.weight);
-        mianownik += (el.weight * el.grades.length);
-        tmp = 0;
+
+function s_wazona(arr){
+    var suma = 0
+    var dziel = 0
+    for(var i = 0; i < arr.allGrades.length; i++){
+        var tab = arr.allGrades[i]
+        suma += _.sum(tab.grades)*tab.weight
+        dziel += tab.grades.length * tab.weight
     }
-    return licznik/mianownik;
+    return suma/dziel
 }
 
+console.log(s_wazona(user))
 
-let z = srednia(user);
-console.log("Zadanie 3: "+z);
+
 
 const collections = [
     {},
